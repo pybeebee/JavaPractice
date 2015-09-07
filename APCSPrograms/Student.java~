@@ -1,0 +1,25 @@
+public class Student extends Person
+{
+  private int studentId;
+  private int level;
+  IDnum++
+  
+  public Student(String fName, String lName, int gLevel)
+  /* Constructor that accepst the first and last names of and the student level.
+   * Student level should be assigned 0 if gLevel is not between 0 and 12, inclusive.
+   * The first and last names should be set by calling the constructor of the parent class.
+   * The Student constructor also sets the studentId to the next available positive integer.
+   * The first Student created should have a studentId of 1, the second will have an ID of 
+   * 2, third of 3, etc.
+   */
+  {
+    if (gLevel>=0 && gLevel<=12){
+      level = gLevel;
+    }
+    else{
+      gLevel == 0;
+    }
+    firstName = fName;
+    lastName = lName;
+    studentId = IDnum;
+  }

@@ -1,0 +1,72 @@
+/*
+ID: kj4mxc1
+LANG: JAVA
+TASK: beads
+*/
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.PrintWriter;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.ArrayList;
+
+public class beads
+{
+  public static boolean sameColor(char current, char next)
+  {
+    if (next == 'w')
+      return true;
+    if (next == current)
+      return true;
+    return false;
+  }
+  public static int count(ArrayList<Character> colorList, int slotindex, int numBeads)
+  {
+ //countLeft
+    int firstLeftSlotIndex = slotindex;
+    int count = 1;
+    int curLeftIndex = (slotIndex-1)%numBeads;
+    int nextLeftIndex = (index-1)%numBeads;
+    char leftcurrentColor = colorList.get(curLeftIndex);
+    char nextLeftColor = colorList.get(nextLeftIndex);
+    while (sameColor(leftcurrentColor, nextLeftColor) && (count <= numBeads))
+    {
+      count++;
+      curLeftIndex = nextIndex;
+      nextLeftIndex = (nextIndex-1)%numBeads;
+    }
+    int limitIndex = curIndex;
+    
+ //countRight
+    int firstRightSlotIndex = slotindex;
+    int curRightIndex = (slotIndex-1)%numBeads;
+    int nextRightIndex = (index+1)%numBeads;
+    char rightcurrentColor = colorList.get(curRightIndex);
+    char nextRightColor = colorList.get(nextRightIndex);
+    while (sameColor(rightcurrentColor, nextRightColor) && (curRightIndex != limitIndex) && (count <= numBeads))
+    {
+      count++;
+      curRightIndex = nextIndex;
+      nextRightIndex = (nextIndex+1)%numBeads;
+    }
+  }
+  public static void main(String arg[]) throws IOException
+  {
+    BufferedReader reader = new BufferedReader(new FileReader("beads.in"));
+    int numBeads = reader.readLine(); //get number of beads
+    String beadString = reader.readLine(); //get String of bead colors
+    ArrayList<Character> colorList = new ArrayList<Character>();
+ //add bead colors to ArrayList colorList
+    for (int i = 0; i < numBeads; i++)
+      colors.add(beadString.charAt(i));
+ //loop through each slot
+    char currentBeadColor = colorList.get(0);
+    int count;
+    for (slotIndex = 0; slotIndex < numBeads; slotIndex++)
+    {
+      count = countLeft(colorList, slotIndex, numBeads);
+      if (count != numBeads)
+    }
+  }
+}

@@ -1,0 +1,99 @@
+/*
+ID: kj4mxc1
+LANG: JAVA
+TASK: friday
+*/
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.io.PrintWriter;
+
+public class friday
+{
+  public static int dayOfWeek(int m, int y)
+  {
+    int month = m;
+    int year = y;
+    ArrayList<Integer> monthDays = new ArrayList<Integer>();
+    monthDays.add(31);
+    monthDays.add(28);
+    monthDays.add(31);
+    monthDays.add(30);
+    monthDays.add(31);
+    monthDays.add(30);
+    monthDays.add(31);
+    monthDays.add(31);
+    monthDays.add(30);
+    monthDays.add(31);
+    monthDays.add(30);
+    monthDays.add(31);
+    
+  // calculate sumA
+    int numLeapYears=0;
+    int sumA = (year-1900)*365;
+    
+  // leap year stuff
+    if (year>1900)
+      numLeapYears += ((year-1900)/4);
+    if ((year%100)==0 && month<3)
+    {
+      if (((year/100)%4)==0)
+        sumA--;
+    }
+    else if ((year%4)==0 && month<3)
+      sumA--;
+
+    sumA += numLeapYears;
+    
+  // calculate sumB and add to sumA
+    int monthDist = month-1;
+    for (int i=0; i<monthDist; i++)
+      sumA += monthDays.get(i);
+    sumA+=12;
+
+
+  // calculate and return index of day to increment 
+    return sumA%7;
+  }
+  
+  public static void main(String arg[]) throws IOException
+  {
+    BufferedReader number = new BufferedReader(new FileReader("friday.in"));
+    int N = Integer.parseInt(number.readLine());
+    ArrayList<Integer> daysOfWeek = new ArrayList<Integer>();
+    
+    for (int i = 0; i<7; i++)
+      daysOfWeek.add(0);
+    
+    for (int year = 1900; year<1900+N; year++)
+    {
+      for (int month = 1; month < 13; month++)
+      {
+        int dayIndex = dayOfWeek(month,year);
+        int orig = daysOfWeek.get(dayIndex);
+        orig++;
+        daysOfWeek.set(dayIndex, orig);
+      }
+    }
+  // return file with Saturday to Friday frequencies
+    String frequencies = "";
+    frequencies += daysOfWeek.get(5);
+    frequencies += " ";
+    frequencies += daysOfWeek.get(6);
+    frequencies += " ";
+    frequencies += daysOfWeek.get(0);
+    frequencies += " ";
+    frequencies += daysOfWeek.get(1);
+    frequencies += " ";
+    frequencies += daysOfWeek.get(2);
+    frequencies += " ";
+    frequencies += daysOfWeek.get(3);
+    frequencies += " ";
+    frequencies += daysOfWeek.get(4);
+    frequencies += " ";
+    PrintWriter writer = new PrintWriter("friday.out", "UTF-8");
+    writer.println(frequencies);
+    writer.close();   
+  }
+}

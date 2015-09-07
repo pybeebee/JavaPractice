@@ -1,0 +1,36 @@
+public class School
+{
+  Arraylist<Student> students = new Arraylist<Students>;
+  Arraylist<Teacher> teachers = new Arraylist<Teachers>;
+  
+  public School(ArrayList<Student> studentlist, ArrayList<Teacher> teacherlist)
+  /* A constructor that specifies teachers and students at a school.*/
+  {
+    for (Student s: studentlist)
+    {
+      students.add(s); 
+    }
+    for (Teacher t: teacherlist)
+    {
+      teachers.add(t);
+    }
+  }
+  public String getGradeLevel(int level)
+  /* Returns a String listing all the school's students that are at the specified grade level.
+   * Returns an empty String if the school has no students at the specified level.
+   */
+  {
+    String lStudents = "";
+    for (Student s: students)
+    {
+      grade = s.getLevel();
+      if (grade == level){
+        info = s.toString();
+        lStudents += "\n";
+        lStudents += info;
+      }
+      else{}
+    }
+    return lStudents;
+  }
+}

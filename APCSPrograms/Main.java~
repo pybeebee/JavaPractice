@@ -1,0 +1,19 @@
+/* AP Computer Science MOOC
+ * Term 2- Assignment 5: Shuffle
+ * Main Class
+ * Gabrielle Kaili-May Liu
+ * March 29, 2015 (created, completed)
+ */
+
+public class Main
+{
+  public static void main(String[] args)
+  {
+    ArrayList <Card> h1 = new ArrayList(5);
+    ArrayList <Card> h2 = new ArrayList(5);
+    ArrayList <Card> sd = initDeck();
+    sd.shuffleDeck();
+    
+  }
+  
+}

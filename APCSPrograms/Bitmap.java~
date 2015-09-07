@@ -1,0 +1,44 @@
+/* Assignment 7- Bitmap
+ * Bitmap Class
+ * April 11, 2015 (created, completed)
+ * Gabrielle Kaili-May Liu
+ */
+public class Bitmap
+{
+// initiate variables
+  private String image[][] = new String[10][10];
+  
+// initiate methods in Bitmap
+  public Bitmap(int a[])
+  /* initializes all images to "-"
+   * sets coordinates from parameter array to "*"
+   */
+  {
+    boolean b = true;
+    for (r = 0; r < image.length; r++)
+    {
+      for (int c = 0; c < image[0].length; c++)
+      {
+        image[r][c] = "-";
+      }
+    }
+    while (b == true){
+    if (a.length%2 != 0)
+      b = false;
+    else{
+      for (int i = 0; i<a.length; i++){
+        if (a[i]<0 || a[i]>9)
+          b = false;
+      }
+    }
+    }
+    while (b==true){
+      for (int i=0; i<a.length; i++){
+        image[i][i+1] = "*";
+        i+=2;
+      }
+    }
+  }
+  
+  
+}

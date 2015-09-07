@@ -1,0 +1,20 @@
+public class HighSchoolStudent extends Student()
+{
+  private double GPA;
+  
+  public HighSchoolStudent(String fName, String lName, int gLevel, double gpa)
+  /* The first and last names and the level should be set by calling the constructor of the 
+   * parent class. The GPA should be between 0 and 5 inclusive, otherwise set to 0.
+   */
+  {
+    super(fName, lName, gLevel);
+    if (gpa>=0 && gpa<= 5)
+    {
+     GPA = gpa; 
+    }
+    else
+    {
+      GPA = 0;
+    }
+  }
+}
