@@ -120,6 +120,6 @@ public class friday
     PrintWriter writer = new PrintWriter("friday.out", "UTF-8");
     writer.println(frequencies);
     writer.close();  
-    System.out.println(frequencies);
+
   }
 }

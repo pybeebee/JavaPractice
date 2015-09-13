@@ -11,6 +11,19 @@ import java.io.PrintWriter;
 
 public class friday
 {
+  public static boolean isLeapYear(int year)
+  {
+    if (year%100 == 0)
+    {
+      if (year%400 == 0)
+        return true;
+      return false;
+    }
+    else if (year%4 == 0)
+      return true;
+    return false;
+  }
+  
   public static int dayOfWeek(int m, int y)
   {
     int month = m;
@@ -32,21 +45,34 @@ public class friday
   // calculate sumA
     int numLeapYears=0;
     int sumA = (year-1900)*365;
-    
-  // leap year stuff
-    if (year>1900)
-      numLeapYears += ((year-1900)/4);
-    if ((year%100)==0 && month<3)
-    {
-      if (((year/100)%4)==0)
-        sumA--;
-    }
-    else if ((year%4)==0 && month<3)
-      sumA--;
 
-    sumA += numLeapYears;
+  // assume all divisible by 4 is leap year
+    numLeapYears = (year-1900)/4;
     
-  // calculate sumB and add to sumA
+  // subtract century years
+    int numCents = (year-1900)/100;
+    int numLC=0;
+    if (year>=2000)
+    {
+      numLC = (year-2000)/400 + 1;
+    }
+    numLeapYears = numLeapYears - numCents + numLC; //get rid of non-leap century years
+    
+  // check if current year is leap
+    if (year%400 == 0) //check if leap century year
+    {
+      if (month < 3)// check if month is jan or feb
+        numLeapYears--; //subtract 1 if is jan or feb
+    }
+    else if (year%4 == 0 && year%100 != 0)//check if leap non-century year
+    {
+      if (month < 3) // check if month is jan or feb
+        numLeapYears--; // subtract 1 if is jan or feb
+    }
+
+    sumA += numLeapYears; //add leap days
+    
+  // calculate days between 1/1/year to month/13/year
     int monthDist = month-1;
     for (int i=0; i<monthDist; i++)
       sumA += monthDays.get(i);
@@ -91,9 +117,9 @@ public class friday
     frequencies += daysOfWeek.get(3);
     frequencies += " ";
     frequencies += daysOfWeek.get(4);
-    frequencies += " ";
     PrintWriter writer = new PrintWriter("friday.out", "UTF-8");
     writer.println(frequencies);
-    writer.close();   
+    writer.close();  
+    System.out.println(frequencies);
   }
 }

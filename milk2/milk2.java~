@@ -1,0 +1,52 @@
+/*
+ID: kj4mxc1
+LANG: JAVA
+TASK: milk2
+*/
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Arrays;
+import java.io.PrintWriter;
+
+public class milk2
+{
+  public static void main(String arg[]) throws IOException
+  {
+    BufferedReader reader = new BufferedReader(new FileReader("milk2.in"));
+    int N = Integer.parseInt(reader.readLine());
+    int[] startTimes = new int[N];
+    int[] endTimes = new int[N];
+    String lineData;
+    String[] twoNums;
+    int minTime;
+    int maxTime;
+    int amTime;
+    
+ //get each startTime and endTime pair, store in respective lists
+    for (int i = 0; i < N; i++)
+    {
+      lineData = reader.readLine();
+      twoNums = lineData.split(" ");
+      int startTime = Integer.parseInt(twoNums[1]);
+      int endTime = Integer.parseInt(twoNums[2]);
+      startTimes[i] = startTime;
+      endTimes[i] = endTime;
+    }
+    
+ //get minTime and maxTime to initialize boolean array
+    Arrays.sort(startTimes);
+    Arrays.sort(endTimes);
+    minTime = startTimes[N-1];
+    maxTime = endTimes[N-1];
+    amTime = maxTime - minTime;
+    boolean[] milkTime = new boolean[amTime];
+    
+ //set values in boolean array
+    int a, b;
+    for (int i = 0; i < N; i++)
+    {
+      
+    }
+  }
+}
